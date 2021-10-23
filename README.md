@@ -57,5 +57,5 @@ Files created by project:
 “LOGXXYYZZZZ.TXT” log files; naming convention “LOG”, month, date, and year.
 “README.TXT” lists features of project.
 “SERVER.TXT” contains times server was started –remove now logged by WIFI.TXT.
-WIFI.TXT logs events: WiFi disconnects, WiFi reconnected, watchdog events, and ESP32 Starts with date, time, 
+"WIFI.TXT" logs events: WiFi disconnects, WiFi reconnected, watchdog events, and ESP32 Starts with date, time, 
  
