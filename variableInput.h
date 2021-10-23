@@ -6,6 +6,7 @@
 //   RTSP video feed requires "Unreal Media Server" running on Windows PC and a video camera capable of an RTSP video feed.
 //   Ports 5119 and 5135 must be allowed to pass Firewall.  
 // 
+//   REEDPIN 34   //Rain Gauge input pin.  Opposite side of reed switch goes to ground.
 
 // Replace with your network details  
 //const char * host  = "esp32";
