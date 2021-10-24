@@ -75,3 +75,7 @@ Files created in project:
 "LOGxxyyzzzz" log files; naming convention "LOG" MONTH, DATE, YEAR.
 "README.TXT" lists features of project.
 "WIFI.TXT" logs events; WiFi coonnects, Wifi disconnects, Watchdog events, and ESP32 starts.
+
+Video feed:
+
+Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on  a Windows PC. HTML5 document embeds WebRTC Player; which, pulls "live" video feed from the UMS. Main Menu option "Camera View" of project website displays video feed.
