@@ -78,4 +78,6 @@ Files created in project:
 
 Video feed:
 
-Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on  a Windows PC. HTML5 document embeds WebRTC Player; which, pulls "live" video feed from the UMS. Main Menu option "Camera View" of project website displays video feed.
+Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on  a Windows PC. HTML5 document embeds 
+WebRTC Player; which, pulls "live" video feed from the UMS. Main Menu option "Camera View" of project website displays 
+video feed.
