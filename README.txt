@@ -74,4 +74,4 @@ Files created in project:
 "ACCESS.TXT" log includes date and time, ipAddress, and web URL request.
 "LOGxxyyzzzz" log files; naming convention "LOG" MONTH, DATE, YEAR.
 "README.TXT" lists features of project.
-"WIFI>TXT" logs events; WiFi coonnects, Wifi disconnects, Watchdog events, and ESP32 starts.
+"WIFI.TXT" logs events; WiFi coonnects, Wifi disconnects, Watchdog events, and ESP32 starts.
