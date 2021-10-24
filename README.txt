@@ -49,8 +49,8 @@ variable.h provides configutable options; without having to search 2024 lines of
 Setup:  Setups Serial connections, WiFi, GPIO pins, Interrupts, AsyncWebServer, FTP, OTA, BME280, Time
 configuration, and diagnostic statements (commented out.)
 
-LOOP:  repeats continously; running tasks based on logic statements using timeinf dervied from UDP packets
-from NTP servers; which are used to set system time.
+LOOP:  repeats continously; running tasks based on logic statements using time dervied from UDP packets
+of NTP servers; which are used to set system time.
 
 Functions include:
 
@@ -78,6 +78,6 @@ Files created in project:
 
 Video feed:
 
-Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on  a Windows PC. HTML5 document embeds 
+Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on a Windows PC. HTML5 document embeds 
 WebRTC Player; which, pulls "live" video feed from the UMS. Main Menu option "Camera View" of project website displays 
 video feed.
