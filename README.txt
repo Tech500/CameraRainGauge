@@ -2,7 +2,7 @@
 
 Project would have been impossible for me without the help of people from community; arduino.cc
 Forum, Adafruit.com Forum, ESP8266 Forum, Github.com, Random Nerd Tutorials Forum.  Project started
-back in the Fall of 2012; with gifted of a "Arduino Uno."  Thank you to all the people that havehelped
+back in the Fall of 2012; with gifted of a "Arduino Uno."  Thank you to all the people that have helped
 with the project!
 
 http://weather-3.ddns.net/Weather  Project web site servered from ESP32.
