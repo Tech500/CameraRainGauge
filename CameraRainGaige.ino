@@ -889,7 +889,11 @@ void loop()
 
   gpslat = gps.location.lat();
   gpslng = gps.location.lng();
+	
+  digitalWrite(online, LOW);
 
+  Serial.println("GPS Ready");  
+	
   delay(1);
 
   if(brownout == 1)
