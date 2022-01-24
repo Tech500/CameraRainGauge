@@ -101,7 +101,7 @@ ob_start()
 
      <div id='header' style='color: #ffffff'>       
 
-         <p>Environmental_Rain_Gauge.ino<br></p>
+         <p>CameraRainGauge.ino<br></p>
          <p>Indianapolis, IN, US.</p>
 
 
@@ -141,7 +141,7 @@ ob_start()
 
     <div id='link' style='color: #ffffff'>
 
-	  <a href='https://forum.arduino.cc/index.php?topic=606947.0' style='color: #ffffff'>Project Discussion: ESP32 Based</a></p>
+	  <a href='https://www.hackster.io/Techno500/data-logger-with-live-video-feed-e27f88?f=1&f=1' style='color: #ffffff'>Project on "Hackster.io"</a></p>
    
     </div>
 
