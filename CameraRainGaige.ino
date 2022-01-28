@@ -892,8 +892,6 @@ void loop()
 	
   digitalWrite(online, LOW);
 
-  Serial.println("GPS Ready");  
-	
   delay(1);
 
   if(brownout == 1)
