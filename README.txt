@@ -7,7 +7,7 @@ with the project!
 
 http://weather-3.ddns.net/Weather  Project web site servered from ESP32.
 
-https://observations-weather.000webhostapp.com/index.php  Project servered from hosted, domain web site.
+https://observeredweather.000webhostapp.com   Project web site served by Free Hosting Service
 
 "CameraRainGauge.ino" was developed to provide a data logger accessible over the Internet, provide
 capability to manage files via file transfer protocol (FTP), over-the-air (OTA) firmware updates, two
