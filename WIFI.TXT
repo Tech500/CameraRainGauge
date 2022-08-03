@@ -1,0 +1,12 @@
+ESP32 Webserver Started...
+WiFi Connected:      Wed , 07/27/2022 , 11:47:05 EDT   Connection result: 3
+
+WiFi Disconnected:   Wed , 07/27/2022 , 11:59:27 EDT   Connection result: 5
+WiFi Connected:      Wed , 07/27/2022 , 12:01:59 EDT   Connection result: 3
+
+ESP32 Restart caused by Watchdog Event...
+WiFi Connected:      Fri , 07/29/2022 , 11:05:07 EDT   Connection result: 3
+
+ESP32 Restart caused by Brownout Detection...
+WiFi Connected:      Mon , 08/01/2022 , 07:05:49 EDT   Connection result: 3
+
