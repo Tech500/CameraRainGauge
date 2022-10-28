@@ -1501,6 +1501,14 @@ void beep(unsigned char delayms)
 void configTime()
 {
 
+  /*
+  Found this reference on setting TZ: http://www.gnu.org/software/libc/manual/html_node/TZ-Variable.html
+  Here are some example TZ values, including the appropriate Daylight Saving Time and its dates of applicability. 
+  In North American Eastern Standard Time (EST) and Eastern Daylight Time (EDT), the normal offset from UTC is 5 hours; 
+  since this is west of the prime meridian, the sign is positive. Summer time begins on March's second Sunday at 
+  2:00am, and ends on November's first Sunday at 2:00am.
+  */
+  
   configTime(0, 0, udpAddress1, udpAddress2);
   setenv("TZ", "EST+5EDT,M3.2.0/2,M11.1.0/2", 3);   // this sets TZ to Indianapolis, Indiana
   tzset();
