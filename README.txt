@@ -1,5 +1,10 @@
 # CameraRainGauge
 
+Update 01/26/2023  Added: Uploading data to Google Sheet by the month for a year.
+File in folder BME280 ChatGPT6 is copied into Google App script editor.  Before pasting into editor; erase any existing code.
+Replace new sheet_id with sheet_id where Google App script was placed.  For more detailed information see article:
+"ESP32 Data Logging to Google Sheets with Google Scripts" here:  https://iotdesignpro.com/articles/esp32-data-logging-to-google-sheets-with-google-scripts
+
 Project would have been impossible for me without the help of people from community; arduino.cc
 Forum, Adafruit.com Forum, ESP8266 Forum, Github.com, Random Nerd Tutorials Forum.  Project started
 back in the Fall of 2012; with gifted of a "Arduino Uno."  Thank you to all the people that have helped
