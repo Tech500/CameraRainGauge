@@ -22,7 +22,7 @@
 //
 //                       Project is Open-Source, requires one BME280 breakout board, a NEO m8n GPS Module, and a "HiLetgo ESP-WROOM-32 ESP32 ESP-32S Development Board"
 //
-//                       http://weather-3.ddns.net/Weather  Project web page  --Servered from ESP32.
+//                       http://weather-3.ddns.net  Project web page  --Servered from ESP32.
 //
 //                       https://observeredweather.000webhostapp.com  --Project: served by "free" Domain hosting service
 //
