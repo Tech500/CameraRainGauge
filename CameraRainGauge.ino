@@ -1,10 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//      5.0              Version  5.0 Mod_40_CameraRainGauge.ino 01/05/2023 @ 01:30 EST  Developed by William  M. Lucid
+//                       Version  5.0 CameraRainGauge.ino 01/26/2023 @ 24:55 EST  Developed by William  M. Lucid
 //
 //                       Added saving data to Google Sheets using Google Drive.
-//
-//                       Sketch folder:  G:\Mod_40_CameraRainGauge
 //
 //                       Environmental Calculations for Dewpoint, Heatindex, and Sea level Barometric Pressure.
 //
@@ -33,7 +31,7 @@
 //                       https://www.youtube.com/embed/Wq-Kb7D8eQ4?list=LL
 //
 //
-//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.4; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
+//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.6; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -463,7 +461,7 @@ void setup()
   while (!Serial) {}
 
   Serial.println("");
-  Serial.println("\nVersion  5.0 Mod_40_CameraRainGauge.ino 01/05/2023 @ 01:30 EST");
+  Serial.println("\nVersion  5.0 CameraRainGauge.ino 01/26/2023 @ 24:55 EST");
   Serial.println("");
 
   if (rtc_get_reset_reason(0) == 1)  //VBAT_RESET --brownout restart
