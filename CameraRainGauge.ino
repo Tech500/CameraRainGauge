@@ -97,9 +97,7 @@
 #include "index7.h"  //display video RTSP Stream
 
 // Google script ID and required credentials
-//String GOOGLE_SCRIPT_ID = "AKfycbzScbZwR3UanQeZCQKI4mBqAj_tC5cMqa_gn3sBRtnC29wsL-0nXBO-8BVKaQQq6bNp";    //Deployment id
-//String GOOGLE_SCRIPT_ID = "AKfycbwJDYnsUG1sIkRn6b3WhdBopyCI0cUFZXV6W8ONl3Ip9gobIzMlUHFOGrtwOd7pol4M";    //Deployment id";    //Deployment id  //BME280 ChatGPT5
-String GOOGLE_SCRIPT_ID = "AKfycbxiYK8Ykcpx-YeIAH6WP1Jy0GY7-GeTUAz28vsPJzQ " //Deployment id      //BME280 ChatGPT6 mod
+String GOOGLE_SCRIPT_ID = "Replace with deployment_id" //Deployment_id for Google App Script "BME280 ChatGPT6.gs"
                           
 unsigned long previousMillis = 0;
 unsigned long interval = 30000;
