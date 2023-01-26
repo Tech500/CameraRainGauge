@@ -10,7 +10,7 @@
 
   // Google App Script produced using ChatGPT and ChatGPT-3.
 
-  var sheet_id = "1uZLfCLtPZ1liygUXN4ZhkVQzvRvNffh--rlq7fkEUpA"; 
+  var sheet_id = "replace with sheet_id"; 
   const now = new Date();   
   // Get the current sheet for the month
   var sheet = getSheetForMonth(now.getMonth());
