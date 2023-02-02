@@ -7,10 +7,10 @@
 
 //  Google Sheets App script created in parts by OpenAI.com, ChatGPT.  Additional code by William Lucid 02/01/202
   
-  var sheet_id = "1C5oN9RmzcEEqDvhsOFnDFbC4mDhsCczHBBYfkuqFy3U";   
+  var sheet_id = "Replace with deployment_id";   
   const now = new Date();   
   var ss = SpreadsheetApp.openById(sheet_id);
-  var sheet = ss.getSheetByName('February 2023');
+  var sheet = ss.getSheetByName('January 2023');
   var month = now.getMonth();
   var i = 0;
   var flag = 0;
@@ -26,8 +26,6 @@
 	var dewpoint = Number(e.parameter.dewpoint);
 	var pressure = Number(e.parameter.pressure);
 	var diff = Number(e.parameter.diff);
-  
-
 
 	testForNextYear()
 
