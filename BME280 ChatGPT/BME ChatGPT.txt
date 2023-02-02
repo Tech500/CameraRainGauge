@@ -8,12 +8,12 @@
 //  Google Sheets App script created in parts by OpenAI.com, ChatGPT.  Additional code by William Lucid 02/01/202
   
   var sheet_id = "1C5oN9RmzcEEqDvhsOFnDFbC4mDhsCczHBBYfkuqFy3U";   
-	const now = new Date();   
+  const now = new Date();   
   var ss = SpreadsheetApp.openById(sheet_id);
   var sheet = ss.getSheetByName('February 2023');
   var month = now.getMonth();
   var i = 0;
-	var flag = 0;
+  var flag = 0;
 
   function doGet(e){
 
@@ -80,7 +80,7 @@
     if (sheet == null) {
       sheet = SpreadsheetApp.getActive().insertSheet(sheetName);
       for (var i = 0; i < data.length; i++) {
-  ``  // Append the data to the sheet
+      // Append the data to the sheet
       sheet.appendRow(headers);
       // Append the data to the sheet
       sheet.appendRow(["dtstamp","temp","heatindex","humidity","dewpoint","pressure","diff"]);
