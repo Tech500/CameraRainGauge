@@ -2,7 +2,7 @@
 //
 //                       Version  5.0 CameraRainGauge.ino 01/26/2023 @ 24:55 EST  Developed by William  M. Lucid
 //
-//                       Added saving data to Google Sheets using Google Drive.
+//                       Added saving data to Google Sheets using Google Drive.  Function that sends data to Google Sheets is "googlesheet()."
 //
 //                       Environmental Calculations for Dewpoint, Heatindex, and Sea level Barometric Pressure.
 //
