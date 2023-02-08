@@ -25,7 +25,7 @@ const char HTML5[] PROGMEM = R"====(
 <div style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
 <div>
 <div style="float:right"><a href="https://www.100forms.com" id="lnk100" title="form to email">form to email</a></div>
-<script src="https://www.100forms.com/js/FORMKEY:RUQ7YJN36S5Z" type="text/javascript"></script>
+<script src="https://www.100forms.com/js/FORMKEY:xxxxxxxxxxx" type="text/javascript"></script>
 </div>
 </form>
 
