@@ -1974,7 +1974,7 @@ float logtoSD()   //Output toLittleFS every fifthteen minutes
   log.print(" inHg. ");
   log.print(" , ");
 
-  if (!pastPressure == currentPressure)
+  if (pastPressure != currentPressure)
   {
     log.print(difference, 3);
     log.print(" Diff. inHg ");
