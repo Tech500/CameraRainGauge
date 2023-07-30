@@ -52,12 +52,19 @@ LiquidCrystal_I2C.h  //  https://github.com/esp8266/Basic/tree/master/libraries/
 Imported files:  index1-7.h make up HTML web pages loaded into memory.
 
 index1.h contains web page for displaying Main Menu options.
+
 index2.h contains web page for displaying the URL filename links used by File Browser.
+
 index3.h contains web page for iframes provided by "ThingSpeak.com" for graphs.
+
 index4.h contains web page for Restarting the ESP32 Web server.
+
 index5.h contains web page for Contact Us form.
+
 index6.h contains web page with java script for displaying selected filename in File Browser.
+
 index7.h contains web page for displaying webRTC "live" video feed.
+
 
 variable.h provides editing options; without having to search 2024 lines of code.
 
