@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//                       Version  5.0 CameraRainGauge.ino 01/26/2023 @ 24:55 EST  Developed by William  M. Lucid
+//      5.0.9            Version Mod_509_CameraRainGauge.ino 06/14/2023 @ 12:25 EDT  Developed by William  M. Lucid
 //
-//                       Added saving data to Google Sheets using Google Drive.  Function that sends data to Google Sheets is "googlesheet()."
+//                       Added saving data to Google Sheets using Google Drive.
 //
 //                       Environmental Calculations for Dewpoint, Heatindex, and Sea level Barometric Pressure.
 //
@@ -20,9 +20,9 @@
 //
 //                       Previous projects:  https://github.com/tech500
 //
-//                       Project is Open-Source, requires one BME280 breakout board, a NEO m8n GPS Module, and a "HiLetgo ESP-WROOM-32 ESP32 ESP-32S Development Board"
+//                       Project is Open-Source, requires one BME280 breakout board, and a "HiLetgo ESP-WROOM-32 ESP32 ESP-32S Development Board"
 //
-//                       http://weather-3.ddns.net  Project web page  --Servered from ESP32.
+//                       http://weather-3.ddns.net/Weather  Project web page  --Servered from ESP32.
 //
 //                       https://observeredweather.000webhostapp.com  --Project: served by "free" Domain hosting service
 //
@@ -31,7 +31,7 @@
 //                       https://www.youtube.com/embed/Wq-Kb7D8eQ4?list=LL
 //
 //
-//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.6; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
+//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.5; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,28 +47,28 @@
 
 
 #include <arduino.h>
-#include "EEPROM.h"  //Part of version 2.0.4 ESP32 Board Manager install
-#include <WiFi.h>   //Part of version 2.0.4 ESP32 Board Manager install
+#include "EEPROM.h"  //Part of version 2.0.5 ESP32 Board Manager install
+#include <WiFi.h>   //Part of version 2.0.5 ESP32 Board Manager install
 #include <WiFiUdp.h>  //2.0.4 ESP32 Board Manager install
 #include <DNSServer.h>
 #include <WebServer.h>
 #include <WiFiManager.h>  //https://github.com/tzapu/WiFiManager
-#include <HTTPClient.h>  //Part of version 2.0.4 ESP32 Board Manager install
+#include <HTTPClient.h>  //Part of version 2.0.5 ESP32 Board Manager install
 #include <AsyncTCP.h>  //https://github.com/me-no-dev/AsyncTCP
 #include <ESPAsyncWebServer.h>  //https://github.com/me-no-dev/ESPAsyncWebServer
-#include <ESPmDNS.h> //Part of version 2.0.4 ESP32 Board Manager install
-#include <FTPServer.h>  //https://github.com/dplasa/FTPClientServer
-#include <sys/time.h>  // struct timeval --> Needed to sync time
-#include <time.h>   // time() ctime() --> Needed to sync time
+#include <ESPmDNS.h> //Part of version 2.0.5 ESP32 Board Manager install
 #include <FS.h>
 #include <LittleFS.h>
+#include <FTPServer.h>  //Library Manager
+#include <sys/time.h>  // struct timeval --> Needed to sync time
+#include <time.h>   // time() ctime() --> Needed to sync time
 #include <Update.h>  //2.0.4 ESP32 Board Manager install
 #include <ThingSpeak.h>   //https://github.com/mathworks/thingspeak-arduino . Get it using the Library Manager
 #include <BME280I2C.h>   //Use the Arduino Library Manager, get BME280 by Tyler Glenn
 //Addition information on this library:  https://github.com/finitespace/BME280
 #include <EnvironmentCalculations.h>  //Use the Arduino Library Manager, get BME280 by Tyler Glenn
-#include <Wire.h>    //Part of version 2.0.4 ESP32 Board Manager install  -----> Used for I2C protocol
-#include <Ticker.h>  //Part of version 2.0.4 ESP32 Board Manager install  -----> Used for watchdog ISR
+#include <Wire.h>    //Part of version 2.0.5 ESP32 Board Manager install  -----> Used for I2C protocol
+#include <Ticker.h>  //Part of version 2.0.5 ESP32 Board Manager install  -----> Used for watchdog ISR
 #include <rom/rtc.h>
 //#include <LiquidCrystal_I2C.h>   //https://github.com/esp8266/Basic/tree/master/libraries/LiquidCrystal optional
 #include "variableInput.h"  //Packaged with project download.  Provides editing options; without having to search 2000+ lines of code.
@@ -94,10 +94,7 @@
 
 #include "index7.h"  //display video RTSP Stream
 
-// Google script ID and required credentials
-String GOOGLE_SCRIPT_ID = "Replace with deployment_id" //Deployment_id for Google App Script "BME280 ChatGPT6.gs"
-                          
-unsigned long previousMillis = 0;
+String GOOGLE_SCRIPT_ID = "your Google Sheet deploymen id"; //Deployment id                 ed long previousMillis = 0;
 unsigned long interval = 30000;
 
 int connect = 0;
@@ -169,6 +166,7 @@ WiFiClient client;
 ///////////////////////////////////////////////////////
 
 ////////////////////////// FTP Server /////////////////
+// tell the FtpServer to use LittleFS
 FTPServer ftpSrv(LittleFS);
 ///////////////////////////////////////////////////////
 
@@ -224,6 +222,7 @@ HardwareSerial uart(2);  //change to uart(2) <--GPIO pins 16 and 17
 //RTC_DATA_ATTR int reconnect = 0;
 
 Ticker secondTick;
+Ticker secondTick2;
 
 portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 
@@ -247,6 +246,32 @@ void IRAM_ATTR ISRwatchdog()
   portEXIT_CRITICAL_ISR(&mux);
 
 }
+
+volatile int cameraCounter;
+volatile int cameraPoweroff = 0;
+
+void IRAM_ATTR ISRCamera()
+{
+
+  portENTER_CRITICAL_ISR(&mux);
+
+  cameraCounter++;
+
+  if (cameraCounter >= 120)
+  {
+
+    cameraPoweroff = 1;
+
+    //switchRelay = 0;  //turn off camera
+
+    secondTick2.detach();
+
+  }
+
+  portEXIT_CRITICAL_ISR(&mux);
+
+}
+
 
 int DOW, MONTH, DATE, YEAR, HOUR, MINUTE, SECOND;
 
@@ -461,7 +486,7 @@ void setup()
   while (!Serial) {}
 
   Serial.println("");
-  Serial.println("\nVersion  5.0 CameraRainGauge.ino 01/26/2023 @ 24:55 EST");
+  Serial.println("\nVersion Mod_509_CameraRainGauge.ino 06/14/2023 @ 12:25 EDT");
   Serial.println("");
 
   if (rtc_get_reset_reason(0) == 1)  //VBAT_RESET --brownout restart
@@ -490,24 +515,20 @@ void setup()
 
   pinMode(25, OUTPUT);
 
-  secondTick.attach(1, ISRwatchdog);  //watchdog ISR increase watchdogCounter by 1 every 1 second
-
+  secondTick.attach(1, ISRwatchdog);  //ISR increase watchdogCounter by 1 every 1 second
+  
   pinMode(online, OUTPUT);  //Set pinMode to OUTPUT for online LED
 
-  ///////////////////////// FTP /////////////////////////////////
-  //FTP Setup, ensureLittleFS is started before ftp;
-  ////////////////////////////////////////////////////////////////
-  if (LittleFS.begin(true))
-  {
+  bool fsok = LittleFS.begin();
+  Serial.printf_P(PSTR("FS init: %s\n"), fsok ? PSTR("ok") : PSTR("fail!"));
 
-    Serial.println("LittleFS opened!");
-    Serial.println("");
-    ftpSrv.begin(ftpUser, ftpPassword); //username, password for ftp.  set ports in ESP8266FtpServer.h  (default 21, 50009 for PASV)
+  Serial.printf_P(PSTR("\nConnected to %s, IP address is %s\n"), ssid, WiFi.localIP().toString().c_str());
 
-  }
-  /////////////////////// End FTP//////////////////////////////
-
- 
+  // setup the ftp server with username and password
+  // ports are defined in FTPCommon.h, default is
+  //   21 for the control connection
+  //   50009 for the data connection (passive mode by default)
+  ftpSrv.begin(F(ftpUser), F(ftpPassword)); //username, password for ftp.  set ports in ESP8266FtpServer.h  (default 21, 50009 for PASV)
  
     serverAsync.on("/favicon.ico", HTTP_GET, [](AsyncWebServerRequest * request)
     {
@@ -591,6 +612,8 @@ void setup()
   {
     PATH = "/RTSP";
     accessLog();
+    secondTick2.attach(1, ISRCamera);  //ISR cameraPoweroff --start two minute timer
+    //switchRelay = 1;  // turn on camera
     if (! flag == 1)
     {
 
@@ -600,7 +623,7 @@ void setup()
 
     end();
 
-    //switchRelay = 1;  // turn on camera
+    
 
   });
 
@@ -896,6 +919,12 @@ void setup()
 void loop()
 {
 
+  if(cameraPoweroff == 1){
+    Serial.println("Camera Power turned off");
+    cameraPoweroff = 0;
+    cameraCounter = 0;
+  }
+
   //udp only send data when connected
   if (connected)
   {
@@ -1033,13 +1062,9 @@ void loop()
 
   }
 
- if (WiFi.status() != WL_CONNECTED) 
- {
+  if (WiFi.status() != WL_CONNECTED) 
+  {
 
-    //Serial.println("Counter:  " + (String)counter);
-    //Serial.println("Disconnect:  " + (String)disconnect);
-
-        
     watchdogCounter = 0;  //Resets the watchdogCounter
 
     //Open "WIFI.TXT" for appended writing.   Client access ip address logged.
@@ -1068,21 +1093,17 @@ void loop()
 
     watchdogCounter = 0;
 
+    wifi_Start();
+
+    configTime();
+
     disconnect = 0;
     counter = 0;
 
-}
+    connect = 1;
 
-    if(WiFi.status() != WL_CONNECTED)
-    {      
-      if (WiFi.status() != WL_NO_SSID_AVAIL)  //if SSIDs are available start WiFi network connection process.
-      {
-         wifi_Start();
+  }
 
-         configTime();
-      }
-    }
-  
   if (watchDog == 1)
   {
 
@@ -1098,7 +1119,7 @@ void loop()
 
   for (int x = 1; x < 5000; x++)
   {
-    ftpSrv.handleFTP();
+    ftpSrv.handleFTP();    
   }
 
   ///////////////////////// OTA Support ///////////////////////
@@ -1484,6 +1505,16 @@ void configTime()
   configTime(0, 0, udpAddress1, udpAddress2);
   setenv("TZ", "EST+5EDT,M3.2.0/2,M11.1.0/2", 3);   // this sets TZ to Indianapolis, Indiana
   tzset();
+
+  //udp only send data when connected
+  if (connected)
+  {
+
+    //Send a packet
+    udp.beginPacket(udpAddress1, udpPort);
+    udp.printf("Seconds since boot: %u", millis() / 1000);
+    udp.endPacket();
+  }
 
   Serial.print("wait for first valid timestamp");
 
@@ -2276,8 +2307,8 @@ void googleSheet()
   
     String urlFinal = "https://script.google.com/macros/s/"+GOOGLE_SCRIPT_ID+"/exec?"+data;
     Serial.print("POST data to spreadsheet:");
-    Serial.println(urlFinal);
     urlFinal.replace(" ", "%20");
+    Serial.println(urlFinal);
     HTTPClient http;
     http.begin(urlFinal.c_str());
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");  //Specify content-type header
@@ -2312,14 +2343,9 @@ void wifi_Start()
   WiFi.onEvent(WiFiEvent);
   WiFi.onEvent(WiFiGotIP, WiFiEvent_t::ARDUINO_EVENT_WIFI_STA_GOT_IP);
   WiFiEventId_t eventID = WiFi.onEvent([](WiFiEvent_t event, WiFiEventInfo_t info) {
-    //Serial.print("WiFi lost connection. Reason: \n");
-    //Serial.println(info.wifi_sta_disconnected.reason);
+  //Serial.print("WiFi lost connection. Reason: \n");
+  //Serial.println(info.wifi_sta_disconnected.reason);
   }, WiFiEvent_t::ARDUINO_EVENT_WIFI_STA_DISCONNECTED);
-
-  // Remove WiFi event
-  //Serial.print("WiFi Event ID: ");
-  ////Serial.println(eventID);
-  //WiFi.removeEvent(eventID);
 
   WiFiManager wifiManager;
 
@@ -2327,9 +2353,10 @@ void wifi_Start()
   
   //reset settings - for testing
   //Must be disabled or Brownouts need networking reset from phone app/
+ 
   //wifiManager.resetSettings();
 
-    //set static ip
+  //set static ip
   //block1 should be used for ESP8266 core 2.1.0 or newer, otherwise use block2
 
   //start-block1
@@ -2342,13 +2369,16 @@ void wifi_Start()
 
   wifiManager.setSTAStaticIPConfig(_ip, _gw, _sn, _dns);
 
-  //tries to connect to last known settings
+  watchdogCounter = 0;  //Resets the watchdogCounter
+
+ //tries to connect to last known settings
   //if it does not connect it starts an access point with the specified name
   //here  "AutoConnectAP" with password "password"
   //and goes into a blocking loop awaiting configuration
   if (!wifiManager.autoConnect("AutoConnectAP", "password")) {
     Serial.println("failed to connect, we should reset as see if it connects");
-    delay(3000);
+    delay(1000);
+    watchdogCounter = 0;  //Resets the watchdogCounter
     ESP.restart();
     delay(5000);
   }
@@ -2358,4 +2388,7 @@ void wifi_Start()
   Serial.println("local ip");
   Serial.println(WiFi.localIP());
 
+  connected = 1;
+
 }
+
