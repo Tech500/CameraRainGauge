@@ -94,7 +94,7 @@ Previously I used a Windows 11 computer to run Unreal Media Server, 24/7 consumi
 around 300 Watts per hour. Switching to Raspberry Pi saves 290 Watts per hour! UMS
 provided RSTP URL that was embedded in HTML web page.
 
-<a href="http://wetlandpond.ddns.net">Current Live view of Wetland Pond behind our home</a>
+![Current Live view of Wetland Pond behind our home](http://wetlandpond.ddns.net)
 
 Live view web page is served from ESP32 running “CameraRainGauge” which receives
 URL from the Docker container, running on Raspberry Pi 4.
