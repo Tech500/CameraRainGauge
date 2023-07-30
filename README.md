@@ -31,13 +31,21 @@ Most libraries are part of the ESP32 core; version 1.0.4 was used for this proje
 Third party libraries:   
 
 AsyncTCP.h //https://github.com/me-no-dev/AsyncTCP
+
 ESPAsyncWebServer.h  //https://github.com/me-no-dev/ESPAsyncWebServer
+
 ESP8266FTPServer.h  //https://github.com/nailbuster/esp8266FTPServer
+
 ThingSpeak.h  //https://github.com/mathworks/thingspeak-arduino
+
 TinyGPS++.h  //http://arduiniana.org/libraries/tinygpsplus  used with NEO m8n GPS module
+
 BME280I2C.h  //Use Arduino IDE library manager; get BME280 by Tyler Glenn
+
 EnvironmentalCalculations.h  //Part of BME280 library by Tyler Glenn
+
 LiquidCrystal_I2C.h  //https://github.com/esp8266/Basic/tree/master/libraries/LiquidCrystal --optional
+
 
 Imported files:  index1-7.h make up HTML web pages loaded into memory.
 
@@ -94,7 +102,7 @@ Previously I used a Windows 11 computer to run Unreal Media Server, 24/7 consumi
 around 300 Watts per hour. Switching to Raspberry Pi saves 290 Watts per hour! UMS
 provided RSTP URL that was embedded in HTML web page.
 
-![Current Live view of Wetland Pond behind our home](http://wetlandpond.ddns.net)
+[Current Live view of Wetland Pond behind our home](http://wetlandpond.ddns.net)
 
 Live view web page is served from ESP32 running “CameraRainGauge” which receives
 URL from the Docker container, running on Raspberry Pi 4.
