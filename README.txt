@@ -47,7 +47,7 @@ index3.h contains web page for iframes provided by "ThingSpeak.com" for graphs.
 index4.h contains web page for Restarting the ESP32 Web server.
 index5.h contains web page for Contact Us form.
 index6.h contains web page with java script for displaying selected filename in File Browser.
-index7.h contains web page for displaying RTSP "live" video feed.
+index7.h contains web page for displaying webRTC "live" video feed.
 
 variable.h provides configutable options; without having to search 2024 lines of code.
 
@@ -83,6 +83,18 @@ Files created in project:
 
 Video feed:
 
-Video is captured by "Wyse Cam 3" feeding the free "Unreal Media Server" running on a Windows PC. HTML5 document embeds 
-WebRTC Player; which, pulls "live" video feed from the UMS. Main Menu option "Camera View" of project website displays 
-video feed.
+Camera used for video streaming is a Wyse Cam v3. My method of video streaming is a
+little different; with a Raspberry Pi 4 running Portainer with a Docker container, 
+“WyzeBridge.” Docker container “Wyze-Bridge” interfaces with your “Wyze” account; 
+using your “Wyze” app account credentials to capture the H.264 video stream and 
+provide URL’s that can be embedded in a web page. “Wyze-Bridge” is specific to the 
+“Wyze” cameras and does not need “Wyze” RTSP firmware.
+
+Previously I used a Windows 11 computer to run Unreal Media Server, 24/7 consuming
+around 300 Watts per hour. Switching to Raspberry Pi saves 290 Watts per hour! UMS
+provided RSTP URL that was embedded in HTML web page.
+
+(http://wetlandpond.ddns.net)[Current Live view of Wetland Pond behind our home.]
+
+Live view web page is served from ESP32 running “CameraRainGauge” which receives
+URL from the Docker container, running on Raspberry Pi 4.
