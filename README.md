@@ -1,18 +1,19 @@
 # CameraRainGauge
 
-Update 01/26/2023  Added: Uploading data to Google Sheet by the month for a year.
+Update 07/30/2023  Added: Uploading data to Google Sheet by the month for a year.
 File in folder BME280 ChatGPT6 is copied into Google App script editor.  Before pasting into editor; erase any existing code.
 Replace new sheet_id with sheet_id where Google App script was placed.  For more detailed information see article:
-"ESP32 Data Logging to Google Sheets with Google Scripts" here:  https://iotdesignpro.com/articles/esp32-data-logging-to-google-sheets-with-google-scripts
+
+["ESP32 Data Logging to Google Sheets with Google Scripts"](https://iotdesignpro.com/articles/esp32-data-logging-to-google-sheets-with-google-scripts)
 
 Project would have been impossible for me without the help of people from community; arduino.cc
 Forum, Adafruit.com Forum, ESP8266 Forum, Github.com, Random Nerd Tutorials Forum.  Project started
 back in the Fall of 2012; with gifted of a "Arduino Uno."  Thank you to all the people that have helped
 with the project!
 
-http://weather-3.ddns.net  Project web site servered from ESP32.
+[Project web site servered from ESP32.](http://weather-3.ddns.net)
 
-https://observeredweather.000webhostapp.com   Project web site served by Free Hosting Service
+[Project web site served by Free Hosting Service](https://observeredweather.000webhostapp.com)   
 
 "CameraRainGauge.ino" was developed to provide a data logger accessible over the Internet, provide
 capability to manage files via file transfer protocol (FTP), over-the-air (OTA) firmware updates, two
@@ -30,21 +31,22 @@ Most libraries are part of the ESP32 core; version 1.0.4 was used for this proje
 
 Third party libraries:   
 
-AsyncTCP.h //https://github.com/me-no-dev/AsyncTCP
+AsyncTCP.h //  https://github.com/me-no-dev/AsyncTCP
 
-ESPAsyncWebServer.h  //https://github.com/me-no-dev/ESPAsyncWebServer
+ESPAsyncWebServer.h  //  https://github.com/me-no-dev/ESPAsyncWebServer
 
-ESP8266FTPServer.h  //https://github.com/nailbuster/esp8266FTPServer
+ESP8266FTPServer.h  //  https://github.com/nailbuster/esp8266FTPServer
 
-ThingSpeak.h  //https://github.com/mathworks/thingspeak-arduino
+ThingSpeak.h  //  https://github.com/mathworks/thingspeak-arduino
 
-TinyGPS++.h  //http://arduiniana.org/libraries/tinygpsplus  used with NEO m8n GPS module
+TinyGPS++.h  //  http://arduiniana.org/libraries/tinygpsplus  used with NEO m8n GPS module
 
-BME280I2C.h  //Use Arduino IDE library manager; get BME280 by Tyler Glenn
+BME280I2C.h  //  Use Arduino IDE library manager; get BME280 by Tyler Glenn
 
-EnvironmentalCalculations.h  //Part of BME280 library by Tyler Glenn
+EnvironmentalCalculations.h  //  Part of BME280 library by Tyler Glenn
 
-LiquidCrystal_I2C.h  //https://github.com/esp8266/Basic/tree/master/libraries/LiquidCrystal --optional
+LiquidCrystal_I2C.h  //  https://github.com/esp8266/Basic/tree/master/libraries/LiquidCrystal --optional
+
 
 
 Imported files:  index1-7.h make up HTML web pages loaded into memory.
@@ -57,7 +59,7 @@ index5.h contains web page for Contact Us form.
 index6.h contains web page with java script for displaying selected filename in File Browser.
 index7.h contains web page for displaying webRTC "live" video feed.
 
-variable.h provides configutable options; without having to search 2024 lines of code.
+variable.h provides editing options; without having to search 2024 lines of code.
 
 Setup:  Setups Serial connections, WiFi, GPIO pins, Interrupts, AsyncWebServer, FTP, OTA, BME280, Time
 configuration, and diagnostic statements (commented out.)
