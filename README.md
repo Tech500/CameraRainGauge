@@ -1,8 +1,9 @@
 # CameraRainGauge
 
-Update 07/30/2023  Added: Uploading data to Google Sheet by the month for a year.
-File in folder BME280 ChatGPT6 is copied into Google App script editor.  Before pasting into editor; erase any existing code.
-Replace new sheet_id with sheet_id where Google App script was placed.  For more detailed information see article:
+Update 07/30/2023  Added: Uploading data to Google Sheet by month to month continously.
+File "Google Sheet script for month to month data logging.md"; remove googleSheet function when copying file into Google App script editor.  
+Before pasting into editor; erase any existing code.  Replace new sheet_id with sheet_id where Google App script was placed.  
+For more detailed information see article:
 
 ["ESP32 Data Logging to Google Sheets with Google Scripts"](https://iotdesignpro.com/articles/esp32-data-logging-to-google-sheets-with-google-scripts)
 
@@ -102,7 +103,7 @@ Video feed:
 
 Camera used for video streaming is a Wyse Cam v3. My method of video streaming is a
 little different; with a Raspberry Pi 4 running Portainer with a Docker container, 
-“WyzeBridge.” Docker container “Wyze-Bridge” interfaces with your “Wyze” account; 
+“Wyze-Bridge.” Docker container “Wyze-Bridge” interfaces with your “Wyze” account; 
 using your “Wyze” app account credentials to capture the H.264 video stream and 
 provide URL’s that can be embedded in a web page. “Wyze-Bridge” is specific to the 
 “Wyze” cameras and does not need “Wyze” RTSP firmware.
