@@ -31,7 +31,7 @@
 //                       https://www.youtube.com/embed/Wq-Kb7D8eQ4?list=LL
 //
 //
-//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.5; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
+//                       Note:  Uses ESP32 core by ESP32 Community, version 2.0.11; from "Arduino IDE, Board Manager."   Arduino IDE; use Board:  "Node32s" for the "HiLetGo" ESP32 Board.
 //
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
